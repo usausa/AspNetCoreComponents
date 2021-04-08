@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreComponents.Bootstrap", "AspNetCoreComponents.Bootstrap\AspNetCoreComponents.Bootstrap.csproj", "{1CBBF297-CC84-42B3-B6DD-A5ADADAF0103}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreComponents.Csv", "AspNetCoreComponents.Csv\AspNetCoreComponents.Csv.csproj", "{6B989D84-4B7E-45B6-B6BF-52ADB7A7D14F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreComponents.Pdf", "AspNetCoreComponents.Pdf\AspNetCoreComponents.Pdf.csproj", "{4AE8D637-1013-49E1-8D9C-CDDE96DA6AB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreComponents.QrCode", "AspNetCoreComponents.QrCode\AspNetCoreComponents.QrCode.csproj", "{6ED03E1B-E4A7-472F-B389-DDF17193D9BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2FAE319D-1B0A-44BA-9FC3-923D7C20ECCE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		AspNetCoreComponents.ruleset = AspNetCoreComponents.ruleset
+		AspNetCoreComponents.sln.DotSettings = AspNetCoreComponents.sln.DotSettings
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CBBF297-CC84-42B3-B6DD-A5ADADAF0103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBBF297-CC84-42B3-B6DD-A5ADADAF0103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBBF297-CC84-42B3-B6DD-A5ADADAF0103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBBF297-CC84-42B3-B6DD-A5ADADAF0103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B989D84-4B7E-45B6-B6BF-52ADB7A7D14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B989D84-4B7E-45B6-B6BF-52ADB7A7D14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B989D84-4B7E-45B6-B6BF-52ADB7A7D14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B989D84-4B7E-45B6-B6BF-52ADB7A7D14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE8D637-1013-49E1-8D9C-CDDE96DA6AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE8D637-1013-49E1-8D9C-CDDE96DA6AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE8D637-1013-49E1-8D9C-CDDE96DA6AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE8D637-1013-49E1-8D9C-CDDE96DA6AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED03E1B-E4A7-472F-B389-DDF17193D9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED03E1B-E4A7-472F-B389-DDF17193D9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED03E1B-E4A7-472F-B389-DDF17193D9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED03E1B-E4A7-472F-B389-DDF17193D9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4698A136-C118-4C35-B537-F260FCDD44CF}
+	EndGlobalSection
+EndGlobal
