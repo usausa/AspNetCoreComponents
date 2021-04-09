@@ -1,7 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <RootNamespace>Smart</RootNamespace>
+    <CodeAnalysisRuleSet>..\AspNetCoreComponents.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>AspNetCoreComponents.QrCode</PackageId>
+    <Title>AspNetCoreComponents</Title>
+    <Description>Wrapper library for ASP.NET Core application</Description>
+    <Summary>Wrapper library for ASP.NET Core application</Summary>
+    <PackageTags>aspnetcore</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
 
 </Project>
