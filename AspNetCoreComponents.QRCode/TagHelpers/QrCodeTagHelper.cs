@@ -1,4 +1,4 @@
-namespace Example.Web.Infrastructure.TagHelpers
+namespace AspNetCoreComponents.Bootstrap.TagHelpers
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -13,7 +13,7 @@ namespace Example.Web.Infrastructure.TagHelpers
     using ZXing.QrCode;
 
     [HtmlTargetElement("qrcode")]
-    public sealed class QrcodeTagHelper : TagHelper
+    public sealed class QrCodeTagHelper : TagHelper
     {
         [HtmlAttributeName("content")]
         [AllowNull]
