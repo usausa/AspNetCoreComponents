@@ -1,0 +1,47 @@
+@model DashboardIndexForm
+@{
+    ViewData["Title"] = "Dashboard";
+
+    Paged<DataEntity> paged = ViewBag.Paged;
+}
+
+<div class="btn-toolbar mb-2">
+    <form method="get" class="form-inline">
+        <input type="hidden" asp-for="Go" value="@true" />
+        <div class="form-group">
+            <label class="col-form-label-sm" asp-for="Flag">Flag</label>
+            <select class="form-control-sm mx-sm-2" asp-for="Flag">
+                <option value=""></option>
+                <option value="@true">ON</option>
+                <option value="@false">OFF</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-search"></i> Search</button>
+    </form>
+</div>
+
+<table class="table table-sm table-striped table-bordered mb-1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th class="text-center">Flag</th>
+            <th>DateTime</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in paged.EmptyIfNull())
+        {
+            <tr>
+                <td>@entry.Id</td>
+                <td>@entry.Name</td>
+                <td class="text-center"><span if="@entry.Flag" class="badge badge-success">ON</span></td>
+                <td>@entry.DateTime.ToString("yyyy/MM/dd HH:mm:ss.fff")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div if="@(paged != null)" class="text-center">
+    @await Html.PartialAsync("_Pager", paged)
+</div>

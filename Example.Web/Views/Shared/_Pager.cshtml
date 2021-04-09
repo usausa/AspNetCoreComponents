@@ -1,0 +1,19 @@
+@model IPaged
+@{
+    const int showPages = 11;
+    var start = Math.Max(1, Math.Min(Model.Page - (showPages / 2), Model.TotalPage - showPages + 1));
+    var end = Math.Min(Model.TotalPage, start + showPages - 1);
+}
+
+<ul class="pagination justify-content-center">
+    <li if="@Model.HasPrev" class="page-item"><a href="@ViewContext.ReplaceQuery("Page", (Model.Page - 1).ToString())" class="page-link"><i class="fas fa-angle-left"></i></a></li>
+    <li if="@(!Model.HasPrev)" class="page-item disabled"><a href="#" class="page-link"><i class="fas fa-angle-left"></i></a></li>
+
+    @for (var page = start; page <= end; page++)
+    {
+        <li class="page-item @((page == Model.Page).Active())"><a href="@ViewContext.ReplaceQuery("Page", page.ToString())" class="page-link">@(page)</a></li>
+    }
+
+    <li if="@Model.HasNext" class="page-item"><a href="@ViewContext.ReplaceQuery("Page", (Model.Page + 1).ToString())" class="page-link"><i class="fas fa-angle-right"></i></a></li>
+    <li if="@(!Model.HasNext)" class="page-item disabled"><a href="#" class="page-link"><i class="fas fa-angle-right"></i></a></li>
+</ul>

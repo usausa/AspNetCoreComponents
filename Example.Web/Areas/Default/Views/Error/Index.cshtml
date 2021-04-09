@@ -1,0 +1,33 @@
+@model ErrorViewModel
+@{
+    Layout = "_LayoutSimple";
+
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error</h1>
+@switch (Model.StatusCode)
+{
+    case 400:
+        <p>Bad Request</p>
+        break;
+    case 403:
+        <p>Forbidden</p>
+        break;
+    case 404:
+        <p>Not Found</p>
+        break;
+    case 500:
+        <p>Internal Server Error</p>
+        break;
+    default:
+        <p>Error (@Model.StatusCode)</p>
+        break;
+}
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
