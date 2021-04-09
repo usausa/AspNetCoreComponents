@@ -10,7 +10,7 @@
     <Title>AspNetCoreComponents</Title>
     <Description>Wrapper library for ASP.NET Core application</Description>
     <Summary>Wrapper library for ASP.NET Core application</Summary>
-    <PackageTags>aspnetcore</PackageTags>
+    <PackageTags>aspnetcore bootstrap</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
