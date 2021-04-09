@@ -18,5 +18,6 @@
   <Rules AnalyzerId="Microsoft.NetCore.Analyzers" RuleNamespace="Microsoft.NetCore.Analyzers">
     <Rule Id="CA1019" Action="None" />
     <Rule Id="CA1062" Action="None" />
+    <Rule Id="CA1812" Action="None" />
   </Rules>
 </RuleSet>

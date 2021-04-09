@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <CodeAnalysisRuleSet>..\AspNetCoreComponents.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>AspNetCoreComponents.IpFilter</PackageId>
+    <Title>AspNetCoreComponents</Title>
+    <Description>Wrapper library for ASP.NET Core application</Description>
+    <Summary>Wrapper library for ASP.NET Core application</Summary>
+    <PackageTags>aspnetcore network ip</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IPNetwork2" Version="2.5.300" />
+  </ItemGroup>
+
+</Project>
