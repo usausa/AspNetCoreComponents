@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="CsvHelper" Version="26.1.0" />
+    <PackageReference Include="CsvHelper" Version="27.0.2" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
     <PackageReference Include="PdfSharpCore" Version="1.2.16" />
@@ -17,11 +17,11 @@
     <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
     <PackageReference Include="System.Linq.Async" Version="5.0.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
-    <PackageReference Include="Usa.Smart.AspNetCore" Version="1.4.0" />
-    <PackageReference Include="Usa.Smart.Core" Version="2.0.0-beta3" />
-    <PackageReference Include="Usa.Smart.Data" Version="2.0.0-beta1" />
-    <PackageReference Include="Usa.Smart.Data.Accessor.Extensions.DependencyInjection" Version="2.0.0-beta2" />
-    <PackageReference Include="Usa.Smart.Data.SqlClient" Version="2.0.0-beta1" />
+    <PackageReference Include="Usa.Smart.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Usa.Smart.Core" Version="2.0.0" />
+    <PackageReference Include="Usa.Smart.Data" Version="2.0.0" />
+    <PackageReference Include="Usa.Smart.Data.Accessor.Extensions.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Usa.Smart.Data.SqlClient" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
