@@ -1,7 +1,6 @@
 namespace AspNetCoreComponents.QrCode.TagHelpers
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.IO;
@@ -25,7 +24,7 @@ namespace AspNetCoreComponents.QrCode.TagHelpers
         [HtmlAttributeName("height")]
         public int Height { get; set; }
 
-        [SuppressMessage("Interoperability", "CA1416:ValidatePlatformCompatibility", Justification = "Windows only")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:ValidatePlatformCompatibility", Justification = "Windows only")]
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             var writer = new BarcodeWriterPixelData
