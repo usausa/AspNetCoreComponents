@@ -7,6 +7,7 @@ namespace Example.Web
     using System.IO;
     using System.Text;
     using System.Text.Encodings.Web;
+    using System.Text.Json.Serialization;
     using System.Text.Unicode;
 
     using AutoMapper;
@@ -104,7 +105,7 @@ namespace Example.Web
 #endif
                 .AddJsonOptions(options =>
                 {
-                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                     options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
                 });
 
