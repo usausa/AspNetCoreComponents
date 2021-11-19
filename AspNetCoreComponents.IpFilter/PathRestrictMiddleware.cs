@@ -1,52 +1,51 @@
-namespace AspNetCoreComponents.IpFilter
+namespace AspNetCoreComponents.IpFilter;
+
+using System;
+using System.Net;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Http;
+
+internal class PathRestrictMiddleware
 {
-    using System;
-    using System.Net;
-    using System.Runtime.CompilerServices;
-    using System.Threading.Tasks;
+    private readonly RequestDelegate next;
 
-    using Microsoft.AspNetCore.Http;
+    private readonly string path;
 
-    internal class PathRestrictMiddleware
+    private readonly IPNetwork[] networks;
+
+    public PathRestrictMiddleware(RequestDelegate next, PathRestrictConfig config)
     {
-        private readonly RequestDelegate next;
+        this.next = next;
+        path = config.Path;
+        networks = config.Networks;
+    }
 
-        private readonly string path;
-
-        private readonly IPNetwork[] networks;
-
-        public PathRestrictMiddleware(RequestDelegate next, PathRestrictConfig config)
+    public async Task Invoke(HttpContext context)
+    {
+        if (context.Request.Path.StartsWithSegments(path, StringComparison.OrdinalIgnoreCase) &&
+            ((context.Request.HttpContext.Connection.RemoteIpAddress is null) ||
+             !IsAddressAllowed(context.Request.HttpContext.Connection.RemoteIpAddress)))
         {
-            this.next = next;
-            path = config.Path;
-            networks = config.Networks;
+            context.Response.StatusCode = 403;
+            return;
         }
 
-        public async Task Invoke(HttpContext context)
+        await next(context).ConfigureAwait(false);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private bool IsAddressAllowed(IPAddress address)
+    {
+        for (var i = 0; i < networks.Length; i++)
         {
-            if (context.Request.Path.StartsWithSegments(path, StringComparison.OrdinalIgnoreCase) &&
-                ((context.Request.HttpContext.Connection.RemoteIpAddress is null) ||
-                 !IsAddressAllowed(context.Request.HttpContext.Connection.RemoteIpAddress)))
+            if (networks[i].Contains(address))
             {
-                context.Response.StatusCode = 403;
-                return;
+                return true;
             }
-
-            await next(context).ConfigureAwait(false);
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool IsAddressAllowed(IPAddress address)
-        {
-            for (var i = 0; i < networks.Length; i++)
-            {
-                if (networks[i].Contains(address))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+        return false;
     }
 }

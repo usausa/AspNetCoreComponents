@@ -1,35 +1,34 @@
-namespace Example.Web.Reports.Pdf.Helpers
+namespace Example.Web.Reports.Pdf.Helpers;
+
+using System.Collections.Generic;
+using System.IO;
+
+using PdfSharpCore.Fonts;
+
+public class FontResolver : IFontResolver
 {
-    using System.Collections.Generic;
-    using System.IO;
+    private readonly string path;
 
-    using PdfSharpCore.Fonts;
+    private readonly IDictionary<string, string> fontFiles;
 
-    public class FontResolver : IFontResolver
+    public string DefaultFontName { get; }
+
+    public FontResolver(string path, string defaultFontName, IDictionary<string, string> fontFiles)
     {
-        private readonly string path;
-
-        private readonly IDictionary<string, string> fontFiles;
-
-        public string DefaultFontName { get; }
-
-        public FontResolver(string path, string defaultFontName, IDictionary<string, string> fontFiles)
-        {
-            this.path = path;
-            this.fontFiles = fontFiles;
-            DefaultFontName = defaultFontName;
-        }
-
-        public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
-        {
-            if (fontFiles.TryGetValue(familyName, out var fileName))
-            {
-                return new FontResolverInfo(fileName);
-            }
-
-            return null!;
-        }
-
-        public byte[] GetFont(string faceName) => File.ReadAllBytes(Path.Combine(path, faceName));
+        this.path = path;
+        this.fontFiles = fontFiles;
+        DefaultFontName = defaultFontName;
     }
+
+    public FontResolverInfo ResolveTypeface(string familyName, bool isBold, bool isItalic)
+    {
+        if (fontFiles.TryGetValue(familyName, out var fileName))
+        {
+            return new FontResolverInfo(fileName);
+        }
+
+        return null!;
+    }
+
+    public byte[] GetFont(string faceName) => File.ReadAllBytes(Path.Combine(path, faceName));
 }

@@ -1,7 +1,6 @@
-namespace Example.Domain
+namespace Example.Domain;
+
+public static class Length
 {
-    public static class Length
-    {
-        public const int UserId = 8;
-    }
+    public const int UserId = 8;
 }

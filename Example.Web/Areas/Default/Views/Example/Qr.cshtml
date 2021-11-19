@@ -20,7 +20,7 @@
             </div>
         </div>
         <div if="@(!String.IsNullOrEmpty(Model?.Barcode))" class="form-group">
-            <qrcode height="320" width="320" content="@Model.Barcode" />
+            <qrcode height="320" width="320" content="@Model!.Barcode" />
         </div>
     </form>
 </div>

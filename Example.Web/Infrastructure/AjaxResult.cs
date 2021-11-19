@@ -1,9 +1,8 @@
-namespace Example.Web.Infrastructure
-{
-    public sealed class AjaxResult
-    {
-        public bool Status { get; set; }
+namespace Example.Web.Infrastructure;
 
-        public string? Message { get; set; }
-    }
+public sealed class AjaxResult
+{
+    public bool Status { get; set; }
+
+    public string? Message { get; set; }
 }

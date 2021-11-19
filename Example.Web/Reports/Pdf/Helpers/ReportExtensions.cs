@@ -1,7 +1,6 @@
-namespace Example.Web.Reports.Pdf.Helpers
+namespace Example.Web.Reports.Pdf.Helpers;
+
+public static class ReportExtensions
 {
-    public static class ReportExtensions
-    {
-        // TODO
-    }
+    // TODO
 }

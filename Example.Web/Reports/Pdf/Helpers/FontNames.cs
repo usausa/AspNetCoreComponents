@@ -1,7 +1,6 @@
-namespace Example.Web.Reports.Pdf.Helpers
+namespace Example.Web.Reports.Pdf.Helpers;
+
+public static class FontNames
 {
-    public static class FontNames
-    {
-        public const string Gothic = nameof(Gothic);
-    }
+    public const string Gothic = nameof(Gothic);
 }

@@ -1,11 +1,10 @@
-namespace Example.Web.Areas.Admin
-{
-    using AutoMapper;
+namespace Example.Web.Areas.Admin;
 
-    public class MappingProfile : Profile
-    {
-        //public MappingProfile()
-        //{
-        //}
-    }
+using AutoMapper;
+
+public class MappingProfile : Profile
+{
+    //public MappingProfile()
+    //{
+    //}
 }

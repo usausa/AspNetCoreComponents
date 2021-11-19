@@ -1,18 +1,17 @@
-namespace Example.Web.Reports.Pdf.Helpers
+namespace Example.Web.Reports.Pdf.Helpers;
+
+using System.IO;
+
+public abstract class ReportBuilderBase
 {
-    using System.IO;
-
-    public abstract class ReportBuilderBase
+    public byte[] Build()
     {
-        public byte[] Build()
-        {
-            using var ms = new MemoryStream();
+        using var ms = new MemoryStream();
 
-            Build(ms);
+        Build(ms);
 
-            return ms.ToArray();
-        }
-
-        protected abstract void Build(Stream stream);
+        return ms.ToArray();
     }
+
+    protected abstract void Build(Stream stream);
 }

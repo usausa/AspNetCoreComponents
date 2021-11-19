@@ -1,7 +1,6 @@
-namespace Example.Web.Settings
+namespace Example.Web.Settings;
+
+public class ServerSetting
 {
-    public class ServerSetting
-    {
-        public int LongTimeThreshold { get; set; }
-    }
+    public int LongTimeThreshold { get; set; }
 }

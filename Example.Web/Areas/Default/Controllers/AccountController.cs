@@ -1,50 +1,49 @@
-namespace Example.Web.Areas.Default.Controllers
+namespace Example.Web.Areas.Default.Controllers;
+
+using System;
+using System.Threading.Tasks;
+
+using Example.Web.Areas.Default.Models;
+using Example.Web.Authentication;
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+[AllowAnonymous]
+public class AccountController : BaseDefaultController
 {
-    using System;
-    using System.Threading.Tasks;
+    private AccountManager AccountManager { get; }
 
-    using Example.Web.Areas.Default.Models;
-    using Example.Web.Authentication;
-
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-
-    [AllowAnonymous]
-    public class AccountController : BaseDefaultController
+    public AccountController(AccountManager accountManager)
     {
-        private AccountManager AccountManager { get; }
+        AccountManager = accountManager;
+    }
 
-        public AccountController(AccountManager accountManager)
+    [HttpGet]
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async ValueTask<IActionResult> Login([FromForm] AccountLoginForm form, string? returnUrl)
+    {
+        if (ModelState.IsValid && await AccountManager.LoginAsync(form.UserId, form.Password))
         {
-            AccountManager = accountManager;
+            return Redirect(String.IsNullOrEmpty(returnUrl) ? "~/" : returnUrl);
         }
 
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
+        ModelState.AddModelError(string.Empty, "UserId or Password is invalid.");
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async ValueTask<IActionResult> Login([FromForm] AccountLoginForm form, string? returnUrl)
-        {
-            if (ModelState.IsValid && await AccountManager.LoginAsync(form.UserId, form.Password))
-            {
-                return Redirect(String.IsNullOrEmpty(returnUrl) ? "~/" : returnUrl);
-            }
+        return View(form);
+    }
 
-            ModelState.AddModelError(string.Empty, "UserId or Password is invalid.");
+    [HttpGet]
+    public async ValueTask<IActionResult> Logout()
+    {
+        await AccountManager.LogoutAsync();
 
-            return View(form);
-        }
-
-        [HttpGet]
-        public async ValueTask<IActionResult> Logout()
-        {
-            await AccountManager.LogoutAsync();
-
-            return LocalRedirect("~/");
-        }
+        return LocalRedirect("~/");
     }
 }

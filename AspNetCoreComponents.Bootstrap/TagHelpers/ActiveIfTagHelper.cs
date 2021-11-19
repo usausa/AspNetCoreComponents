@@ -1,24 +1,23 @@
-namespace AspNetCoreComponents.Bootstrap.TagHelpers
+namespace AspNetCoreComponents.Bootstrap.TagHelpers;
+
+using System.Text.Encodings.Web;
+
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
+[HtmlTargetElement(Attributes = ConditionAttributeName)]
+public sealed class ActiveIfTagHelper : TagHelper
 {
-    using System.Text.Encodings.Web;
+    private const string ConditionAttributeName = "active-if";
 
-    using Microsoft.AspNetCore.Mvc.TagHelpers;
-    using Microsoft.AspNetCore.Razor.TagHelpers;
+    [HtmlAttributeName(ConditionAttributeName)]
+    public bool Condition { get; set; }
 
-    [HtmlTargetElement(Attributes = ConditionAttributeName)]
-    public sealed class ActiveIfTagHelper : TagHelper
+    public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        private const string ConditionAttributeName = "active-if";
-
-        [HtmlAttributeName(ConditionAttributeName)]
-        public bool Condition { get; set; }
-
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        if (Condition)
         {
-            if (Condition)
-            {
-                output.AddClass("active", HtmlEncoder.Default);
-            }
+            output.AddClass("active", HtmlEncoder.Default);
         }
     }
 }

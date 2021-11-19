@@ -1,25 +1,24 @@
-namespace Example.Web.Reports.Pdf.Builders
+namespace Example.Web.Reports.Pdf.Builders;
+
+using System.IO;
+
+using Example.Web.Reports.Pdf.Helpers;
+
+using PdfSharpCore.Drawing;
+using PdfSharpCore.Pdf;
+
+public class ExampleReportBuilder : ReportBuilderBase
 {
-    using System.IO;
+    // Can injection service
 
-    using Example.Web.Reports.Pdf.Helpers;
-
-    using PdfSharpCore.Drawing;
-    using PdfSharpCore.Pdf;
-
-    public class ExampleReportBuilder : ReportBuilderBase
+    protected override void Build(Stream stream)
     {
-        // Can injection service
+        using var document = new PdfDocument();
+        var page = document.AddPage();
+        var gfx = XGraphics.FromPdfPage(page);
 
-        protected override void Build(Stream stream)
-        {
-            using var document = new PdfDocument();
-            var page = document.AddPage();
-            var gfx = XGraphics.FromPdfPage(page);
+        gfx.DrawStringCenter("てすと", Fonts.LargeFontB, 0, 0, page.Width, page.Height);
 
-            gfx.DrawStringCenter("てすと", Fonts.LargeFontB, 0, 0, page.Width, page.Height);
-
-            document.Save(stream);
-        }
+        document.Save(stream);
     }
 }

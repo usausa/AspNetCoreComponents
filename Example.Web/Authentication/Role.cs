@@ -1,7 +1,6 @@
-namespace Example.Web.Authentication
+namespace Example.Web.Authentication;
+
+public static class Role
 {
-    public static class Role
-    {
-        public const string Admin = nameof(Admin);
-    }
+    public const string Admin = nameof(Admin);
 }

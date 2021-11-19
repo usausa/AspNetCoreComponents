@@ -1,15 +1,14 @@
-namespace Example.Web.Areas.Default.Models
+namespace Example.Web.Areas.Default.Models;
+
+using System;
+using System.ComponentModel.DataAnnotations;
+
+public class DashboardIndexForm
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
+    public bool Go { get; set; }
 
-    public class DashboardIndexForm
-    {
-        public bool Go { get; set; }
+    [Range(1, Int32.MaxValue)]
+    public int? Page { get; set; }
 
-        [Range(1, Int32.MaxValue)]
-        public int? Page { get; set; }
-
-        public bool? Flag { get; set; }
-    }
+    public bool? Flag { get; set; }
 }

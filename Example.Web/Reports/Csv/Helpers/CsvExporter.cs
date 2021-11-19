@@ -1,45 +1,44 @@
-namespace Example.Web.Reports.Csv.Helpers
+namespace Example.Web.Reports.Csv.Helpers;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+using Smart.AspNetCore.Mvc;
+
+public class CsvExporter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    private ILogger<CsvExporter> Log { get; }
 
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-
-    using Smart.AspNetCore.Mvc;
-
-    public class CsvExporter
+    public CsvExporter(ILogger<CsvExporter> log)
     {
-        private ILogger<CsvExporter> Log { get; }
+        Log = log;
+    }
 
-        public CsvExporter(ILogger<CsvExporter> log)
+    public async ValueTask<IActionResult> MakeFileResult<T>(
+        string downloadName,
+        Type mapType,
+        IEnumerable<T> source)
+    {
+        try
         {
-            Log = log;
+            using var csv = new TemporaryCsvWriter(mapType);
+            await csv.Writer.WriteRecordsAsync(source);
+            await csv.FlushAsync();
+
+            csv.DeleteOnDispose = false;
+            return new DeletePhysicalFileResult(csv.Path, "text/csv")
+            {
+                FileDownloadName = downloadName
+            };
         }
-
-        public async ValueTask<IActionResult> MakeFileResult<T>(
-            string downloadName,
-            Type mapType,
-            IEnumerable<T> source)
+        catch (Exception ex)
         {
-            try
-            {
-                using var csv = new TemporaryCsvWriter(mapType);
-                await csv.Writer.WriteRecordsAsync(source);
-                await csv.FlushAsync();
-
-                csv.DeleteOnDispose = false;
-                return new DeletePhysicalFileResult(csv.Path, "text/csv")
-                {
-                    FileDownloadName = downloadName
-                };
-            }
-            catch (Exception ex)
-            {
-                Log.LogError(ex, "CSV export failed.");
-                throw;
-            }
+            Log.LogError(ex, "CSV export failed.");
+            throw;
         }
     }
 }

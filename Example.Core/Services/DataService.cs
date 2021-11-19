@@ -1,33 +1,32 @@
-namespace Example.Services
+namespace Example.Services;
+
+using System.Threading.Tasks;
+
+using Example.Accessors;
+using Example.Models.Entity;
+using Example.Models.Paging;
+
+using Smart.Data.Accessor;
+
+public class DataSearchParameter : Pageable
 {
-    using System.Threading.Tasks;
+    public bool? Flag { get; set; }
+}
 
-    using Example.Accessors;
-    using Example.Models.Entity;
-    using Example.Models.Paging;
+public class DataService
+{
+    private IDataAccessor DataAccessor { get; }
 
-    using Smart.Data.Accessor;
-
-    public class DataSearchParameter : Pageable
+    public DataService(
+        IAccessorResolver<IDataAccessor> dataAccessor)
     {
-        public bool? Flag { get; set; }
+        DataAccessor = dataAccessor.Accessor;
     }
 
-    public class DataService
+    public async ValueTask<Paged<DataEntity>> QueryAccountPagedAsync(DataSearchParameter parameter)
     {
-        private IDataAccessor DataAccessor { get; }
-
-        public DataService(
-            IAccessorResolver<IDataAccessor> dataAccessor)
-        {
-            DataAccessor = dataAccessor.Accessor;
-        }
-
-        public async ValueTask<Paged<DataEntity>> QueryAccountPagedAsync(DataSearchParameter parameter)
-        {
-            var list = await DataAccessor.QueryDataListAsync(parameter.Flag, parameter.Size, parameter.Offset).ConfigureAwait(false);
-            var count = await DataAccessor.CountDataAsync(parameter.Flag).ConfigureAwait(false);
-            return new Paged<DataEntity>(parameter, list, count);
-        }
+        var list = await DataAccessor.QueryDataListAsync(parameter.Flag, parameter.Size, parameter.Offset).ConfigureAwait(false);
+        var count = await DataAccessor.CountDataAsync(parameter.Flag).ConfigureAwait(false);
+        return new Paged<DataEntity>(parameter, list, count);
     }
 }

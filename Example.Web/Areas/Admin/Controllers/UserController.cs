@@ -1,16 +1,15 @@
-namespace Example.Web.Areas.Admin.Controllers
+namespace Example.Web.Areas.Admin.Controllers;
+
+using Example.Web.Infrastructure.Mvc;
+
+using Microsoft.AspNetCore.Mvc;
+
+public class UserController : BaseAdminController
 {
-    using Example.Web.Infrastructure.Mvc;
-
-    using Microsoft.AspNetCore.Mvc;
-
-    public class UserController : BaseAdminController
+    [AreaControllerRoute]
+    [HttpGet]
+    public IActionResult Index()
     {
-        [AreaControllerRoute]
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }
