@@ -1,4 +1,4 @@
-$(function () {
+(function ($) {
     const $body = $("body");
 
     // Lording
@@ -34,4 +34,4 @@ $(function () {
     } else {
         $(":input:enabled:visible:not([readonly])").first().focus();
     }
-});
+}(jQuery));
