@@ -16,7 +16,7 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
-    <PackageReference Include="ZXing.Net" Version="0.16.6" />
+    <PackageReference Include="ZXing.Net" Version="0.16.7" />
   </ItemGroup>
 
 </Project>
