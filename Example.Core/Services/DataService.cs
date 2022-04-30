@@ -1,7 +1,5 @@
 namespace Example.Services;
 
-using System.Threading.Tasks;
-
 using Example.Accessors;
 using Example.Models.Entity;
 using Example.Models.Paging;

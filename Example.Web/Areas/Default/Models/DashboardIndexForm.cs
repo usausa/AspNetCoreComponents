@@ -1,6 +1,5 @@
 namespace Example.Web.Areas.Default.Models;
 
-using System;
 using System.ComponentModel.DataAnnotations;
 
 public class DashboardIndexForm

@@ -1,8 +1,6 @@
 namespace Example.Web.Infrastructure.Filters;
 
-using System;
 using System.Globalization;
-using System.Linq;
 
 using Example.Models.Paging;
 

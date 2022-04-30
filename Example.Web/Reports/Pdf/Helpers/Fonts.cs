@@ -1,7 +1,5 @@
 namespace Example.Web.Reports.Pdf.Helpers;
 
-using System;
-
 using PdfSharpCore.Drawing;
 
 public static class Fonts

@@ -1,8 +1,5 @@
 namespace Example.Web.Reports.Pdf.Helpers;
 
-using System.Collections.Generic;
-using System.IO;
-
 using PdfSharpCore.Fonts;
 
 public class FontResolver : IFontResolver

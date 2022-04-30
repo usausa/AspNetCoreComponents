@@ -1,8 +1,5 @@
 namespace AspNetCoreComponents.QrCode.TagHelpers;
 
-using System;
-using System.Diagnostics.CodeAnalysis;
-
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using SixLabors.ImageSharp;
@@ -16,8 +13,7 @@ using ZXing.QrCode;
 public sealed class QrCodeTagHelper : TagHelper
 {
     [HtmlAttributeName("content")]
-    [AllowNull]
-    public string Content { get; set; }
+    public string Content { get; set; } = default!;
 
     [HtmlAttributeName("width")]
     public int Width { get; set; }
@@ -26,8 +22,7 @@ public sealed class QrCodeTagHelper : TagHelper
     public int Height { get; set; }
 
     [HtmlAttributeName("alt")]
-    [AllowNull]
-    public string Alt { get; set; }
+    public string Alt { get; set; } = default!;
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {

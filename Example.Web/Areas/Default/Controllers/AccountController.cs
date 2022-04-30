@@ -1,8 +1,5 @@
 namespace Example.Web.Areas.Default.Controllers;
 
-using System;
-using System.Threading.Tasks;
-
 using Example.Web.Areas.Default.Models;
 using Example.Web.Authentication;
 

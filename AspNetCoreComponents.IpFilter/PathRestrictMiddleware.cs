@@ -1,9 +1,7 @@
 namespace AspNetCoreComponents.IpFilter;
 
-using System;
 using System.Net;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 

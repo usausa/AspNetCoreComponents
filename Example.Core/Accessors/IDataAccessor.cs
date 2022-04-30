@@ -1,9 +1,5 @@
 namespace Example.Accessors;
 
-using System.Collections.Generic;
-
-using System.Threading.Tasks;
-
 using Example.Models.Entity;
 using Smart.Data.Accessor.Attributes;
 

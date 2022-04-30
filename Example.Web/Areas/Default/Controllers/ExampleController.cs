@@ -1,9 +1,5 @@
 namespace Example.Web.Areas.Default.Controllers;
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 using Example.Models.View;
 using Example.Web.Areas.Default.Models;
 using Example.Web.Reports.Csv.Helpers;

@@ -1,9 +1,7 @@
 namespace Example.Web.Reports.Pdf.Helpers;
 
-using System;
 //using System.Drawing;
 //using System.Drawing.Imaging;
-//using System.IO;
 //using System.Runtime.InteropServices;
 
 using PdfSharpCore.Drawing;

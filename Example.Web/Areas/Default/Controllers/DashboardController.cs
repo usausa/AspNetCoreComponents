@@ -1,7 +1,7 @@
 namespace Example.Web.Areas.Default.Controllers;
 
-using System.Threading.Tasks;
 using AutoMapper;
+
 using Example.Models.Paging;
 using Example.Services;
 using Example.Web.Areas.Default.Models;

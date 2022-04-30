@@ -54,7 +54,7 @@ Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 // PDF
 GlobalFontSettings.FontResolver = new FontResolver(Directory.GetCurrentDirectory(), FontNames.Gothic, new Dictionary<string, string>
 {
-    { FontNames.Gothic, "ipaexg.ttf" },
+    { FontNames.Gothic, "ipaexg.ttf" }
 });
 
 // Add framework builder.Services.

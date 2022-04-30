@@ -1,7 +1,5 @@
 namespace Example.Web.Reports.Pdf.Helpers;
 
-using System.IO;
-
 public abstract class ReportBuilderBase
 {
     public byte[] Build()

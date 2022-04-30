@@ -1,7 +1,5 @@
 namespace Example.Web.Reports.Pdf.Builders;
 
-using System.IO;
-
 using Example.Web.Reports.Pdf.Helpers;
 
 using PdfSharpCore.Drawing;
