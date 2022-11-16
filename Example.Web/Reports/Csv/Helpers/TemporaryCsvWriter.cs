@@ -28,7 +28,7 @@ public sealed class TemporaryCsvWriter : IDisposable
         {
             HasHeaderRecord = true,
             ShouldQuote = _ => true,
-            Delimiter = ",",
+            Delimiter = ","
         };
 
         Writer = new CsvWriter(sr, config);

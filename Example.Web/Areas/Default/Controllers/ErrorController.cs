@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 public class ErrorController : Controller
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA5395", Justification = "Ignore")]
-    [Route("~/[controller]/{statusCode}")]
+    [Route("~/[controller]/{statusCode:int}")]
     public IActionResult Index(int statusCode)
     {
         return View(new ErrorViewModel

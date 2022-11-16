@@ -1,7 +1,7 @@
 @model IPaged
 @{
     const int showPages = 11;
-    var start = Math.Max(1, Math.Min(Model!.Page - (showPages / 2), Model.TotalPage - showPages + 1));
+    var start = Math.Max(1, Math.Min(Model.Page - (showPages / 2), Model.TotalPage - showPages + 1));
     var end = Math.Min(Model.TotalPage, start + showPages - 1);
 }
 
