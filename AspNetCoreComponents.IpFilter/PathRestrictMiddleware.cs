@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 using Microsoft.AspNetCore.Http;
 
-internal class PathRestrictMiddleware
+internal sealed class PathRestrictMiddleware
 {
     private readonly RequestDelegate next;
 

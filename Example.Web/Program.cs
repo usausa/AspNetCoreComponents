@@ -62,7 +62,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 
 // Settings
-var serverSetting = builder.Configuration.GetSection("Server").Get<ServerSetting>();
+var serverSetting = builder.Configuration.GetSection("Server").Get<ServerSetting>()!;
 
 // Mvc
 builder.Services.AddSingleton<ExceptionStatusFilter>();
