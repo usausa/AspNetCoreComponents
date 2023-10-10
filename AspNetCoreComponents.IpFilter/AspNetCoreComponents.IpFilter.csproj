@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IPNetwork2" Version="2.6.589" />
+    <PackageReference Include="IPNetwork2" Version="2.6.611" />
   </ItemGroup>
 
 </Project>
