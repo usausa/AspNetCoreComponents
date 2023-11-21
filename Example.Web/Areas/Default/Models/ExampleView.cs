@@ -1,4 +1,4 @@
-namespace Example.Models.View;
+namespace Example.Web.Areas.Default.Models;
 
 public class ExampleView
 {

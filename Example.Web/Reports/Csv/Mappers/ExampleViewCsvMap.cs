@@ -1,8 +1,7 @@
 namespace Example.Web.Reports.Csv.Mappers;
 
 using CsvHelper.Configuration;
-
-using Example.Models.View;
+using Example.Web.Areas.Default.Models;
 
 public class ExampleViewCsvMap : ClassMap<ExampleView>
 {

@@ -7,14 +7,11 @@ using System.Text.Unicode;
 
 using AutoMapper;
 
-using Example.Services;
-using Example.Web.Authentication;
 using Example.Web.Reports.Csv.Helpers;
 using Example.Web.Reports.Pdf.Builders;
 using Example.Web.Reports.Pdf.Helpers;
 using Example.Web.Settings;
 
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Data.SqlClient;
 using Microsoft.Net.Http.Headers;
@@ -38,15 +35,11 @@ using StackExchange.Profiling.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Log
-builder.Host
-    .ConfigureLogging((_, logging) =>
-    {
-        logging.ClearProviders();
-    })
-    .UseSerilog((hostingContext, loggerConfiguration) =>
-    {
-        loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration);
-    });
+builder.Logging.ClearProviders();
+builder.Services.AddSerilog(option =>
+{
+    option.ReadFrom.Configuration(builder.Configuration);
+});
 
 // System
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -114,28 +107,10 @@ if (!builder.Environment.IsProduction())
 // Health
 builder.Services.AddHealthChecks();
 
-// Authentication
-builder.Services
-    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.Cookie.Name = "__account";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(1440);
-        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-        options.Cookie.HttpOnly = true;
-
-        options.LoginPath = new PathString("/account/login");
-        options.LogoutPath = new PathString("/account/logout");
-        options.AccessDeniedPath = new PathString("/error/403");
-    });
-
-builder.Services.AddSingleton<AccountManager>();
-
 // Mapper
 builder.Services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(c =>
 {
     c.AddProfile<Example.Web.Areas.Default.MappingProfile>();
-    c.AddProfile<Example.Web.Areas.Admin.MappingProfile>();
 })));
 
 // Database
@@ -156,9 +131,6 @@ builder.Services.AddDataAccessor(c =>
 
 // Csv
 builder.Services.AddSingleton<CsvExporter>();
-
-// Service
-builder.Services.AddSingleton<DataService>();
 
 // Report
 builder.Services.AddSingleton<ExampleReportBuilder>();
@@ -202,6 +174,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-// TODO signalR ?
 
 app.Run();
