@@ -2,12 +2,7 @@ namespace AspNetCoreComponents.QrCode.TagHelpers;
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
-
-using ZXing;
-using ZXing.QrCode;
+using QRCoder;
 
 [HtmlTargetElement("qrcode")]
 public sealed class QrCodeTagHelper : TagHelper
@@ -21,30 +16,24 @@ public sealed class QrCodeTagHelper : TagHelper
     [HtmlAttributeName("height")]
     public int Height { get; set; }
 
+    [HtmlAttributeName("pixel")]
+    public int Pixel { get; set; } = 20;
+
     [HtmlAttributeName("alt")]
     public string Alt { get; set; } = default!;
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        var writer = new BarcodeWriterPixelData
-        {
-            Format = BarcodeFormat.QR_CODE,
-            Options = new QrCodeEncodingOptions
-            {
-                Width = Width,
-                Height = Height
-            }
-        };
-
-        var data = writer.Write(Content);
-
-        var image = Image.LoadPixelData<Rgba32>(data.Pixels, Width, Height);
+        using var generator = new QRCodeGenerator();
+        using var data = generator.CreateQrCode(Content, QRCodeGenerator.ECCLevel.Q);
+        using var png = new PngByteQRCode(data);
+        var bytes = png.GetGraphic(Pixel);
 
         output.TagName = "img";
         output.Attributes.Clear();
         output.Attributes.Add("width", Width);
         output.Attributes.Add("height", Height);
-        output.Attributes.Add("src", image.ToBase64String(PngFormat.Instance));
+        output.Attributes.Add("src", "data:image/png;base64," + Convert.ToBase64String(bytes));
         if (!String.IsNullOrEmpty(Alt))
         {
             output.Attributes.Add("alt", Alt);

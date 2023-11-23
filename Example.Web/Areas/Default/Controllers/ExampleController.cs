@@ -18,9 +18,9 @@ public class ExampleController : BaseDefaultController
     }
 
     [HttpGet]
-    public async ValueTask<IActionResult> Csv([FromServices] CsvExporter csvExporter)
+    public ValueTask<IActionResult> Csv([FromServices] CsvExporter csvExporter)
     {
-        return await csvExporter.MakeFileResult(
+        return csvExporter.MakeFileResult(
             "sample.csv",
             typeof(ExampleViewCsvMap),
             QueryExampleEnumerable());
