@@ -7,7 +7,7 @@
     <Deterministic>true</Deterministic>
     <MSBuildWarningsAsMessages>SA0001</MSBuildWarningsAsMessages>
     <WarningsAsErrors>nullable</WarningsAsErrors>
-      <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup>
