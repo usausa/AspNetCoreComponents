@@ -9,7 +9,6 @@
     <PackageId>AspNetCoreComponents.QrCode</PackageId>
     <Title>AspNetCoreComponents</Title>
     <Description>Wrapper library for ASP.NET Core application</Description>
-    <Summary>Wrapper library for ASP.NET Core application</Summary>
     <PackageTags>aspnetcore qrcode</PackageTags>
   </PropertyGroup>
 

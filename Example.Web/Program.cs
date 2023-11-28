@@ -72,7 +72,7 @@ builder.Services.Configure<RouteOptions>(options =>
 
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.ValueLengthLimit = int.MaxValue;
+    options.ValueLengthLimit = Int32.MaxValue;
     options.MultipartBodyLengthLimit = Int64.MaxValue;
 });
 
