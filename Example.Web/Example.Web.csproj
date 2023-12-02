@@ -19,6 +19,8 @@
         <PackageReference Include="Usa.Smart.AspNetCore" Version="2.4.0" />
         <PackageReference Include="Usa.Smart.Core" Version="2.3.0" />
         <PackageReference Include="Usa.Smart.Data" Version="2.4.0" />
+        <PackageReference Include="Usa.Smart.Data.Accessor" Version="2.5.0" />
+        <PackageReference Include="Usa.Smart.Data.Accessor.Extensions.DependencyInjection" Version="2.5.0" />
         <PackageReference Include="Usa.Smart.Data.SqlClient" Version="2.4.0" />
     </ItemGroup>
 
