@@ -1,6 +1,6 @@
 namespace Example.Web.Areas.Default.Models;
 
-public class ErrorViewModel
+public sealed class ErrorViewModel
 {
     public int StatusCode { get; set; }
 

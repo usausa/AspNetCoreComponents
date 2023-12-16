@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 [Area("default")]
 [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
 [ApiExplorerSettings(IgnoreApi = true)]
-public class ErrorController : Controller
+public sealed class ErrorController : Controller
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5395", Justification = "Ignore")]
+#pragma warning disable CA5395
     [Route("~/[controller]/{statusCode:int}")]
     public IActionResult Index(int statusCode)
     {
@@ -23,4 +23,5 @@ public class ErrorController : Controller
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         });
     }
+#pragma warning restore CA5395
 }

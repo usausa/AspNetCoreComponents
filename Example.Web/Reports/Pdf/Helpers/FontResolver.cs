@@ -2,7 +2,7 @@ namespace Example.Web.Reports.Pdf.Helpers;
 
 using PdfSharpCore.Fonts;
 
-public class FontResolver : IFontResolver
+public sealed class FontResolver : IFontResolver
 {
     private readonly string path;
 

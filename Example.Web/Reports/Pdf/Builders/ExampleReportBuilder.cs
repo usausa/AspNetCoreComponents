@@ -5,7 +5,7 @@ using Example.Web.Reports.Pdf.Helpers;
 using PdfSharpCore.Drawing;
 using PdfSharpCore.Pdf;
 
-public class ExampleReportBuilder : ReportBuilderBase
+public sealed class ExampleReportBuilder : ReportBuilderBase
 {
     // Can injection service
 

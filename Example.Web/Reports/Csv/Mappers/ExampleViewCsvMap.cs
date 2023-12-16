@@ -1,9 +1,10 @@
 namespace Example.Web.Reports.Csv.Mappers;
 
 using CsvHelper.Configuration;
+
 using Example.Web.Areas.Default.Models;
 
-public class ExampleViewCsvMap : ClassMap<ExampleView>
+public sealed class ExampleViewCsvMap : ClassMap<ExampleView>
 {
     // ReSharper disable VirtualMemberCallInConstructor
     public ExampleViewCsvMap()

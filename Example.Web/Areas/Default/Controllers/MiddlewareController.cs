@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [AllowAnonymous]
-public class MiddlewareController : BaseDefaultController
+public sealed class MiddlewareController : BaseDefaultController
 {
     [HttpGet]
     public async ValueTask<IActionResult> Time()

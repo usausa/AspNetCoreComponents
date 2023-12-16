@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [AllowAnonymous]
-public class ExampleController : BaseDefaultController
+public sealed class ExampleController : BaseDefaultController
 {
     [HttpGet]
     public IActionResult Report()

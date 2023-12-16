@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 using Smart.AspNetCore.Mvc;
 
-public class CsvExporter
+public sealed class CsvExporter
 {
     private ILogger<CsvExporter> Log { get; }
 

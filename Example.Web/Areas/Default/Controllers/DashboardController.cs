@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [AllowAnonymous]
-public class DashboardController : BaseDefaultController
+public sealed class DashboardController : BaseDefaultController
 {
     [DefaultRoute]
     [HttpGet]
