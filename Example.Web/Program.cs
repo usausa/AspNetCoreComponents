@@ -78,8 +78,8 @@ builder.Services.Configure<FormOptions>(options =>
 builder.Services
     .AddControllersWithViews(options =>
     {
+        options.Conventions.Add(new KebabControllerModelConvention());
         options.Filters.AddTimeLogging();
-        options.Conventions.Add(new LowercaseControllerModelConvention());
     })
 #if DEBUG
             .AddRazorRuntimeCompilation()
