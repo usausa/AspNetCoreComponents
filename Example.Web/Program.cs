@@ -58,7 +58,6 @@ builder.Services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 var serverSetting = builder.Configuration.GetSection("Server").Get<ServerSetting>()!;
 
 // Mvc
-builder.Services.AddSingleton<ExceptionStatusFilter>();
 builder.Services.Configure<TimeLoggingOptions>(option =>
 {
     option.Threshold = serverSetting.LongTimeThreshold;
@@ -79,7 +78,6 @@ builder.Services.Configure<FormOptions>(options =>
 builder.Services
     .AddControllersWithViews(options =>
     {
-        options.Filters.AddExceptionStatus();
         options.Filters.AddTimeLogging();
         options.Conventions.Add(new LowercaseControllerModelConvention());
     })
