@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		AspNetCoreComponents.ruleset = AspNetCoreComponents.ruleset
+		Analyzers.ruleset = Analyzers.ruleset
 		AspNetCoreComponents.sln.DotSettings = AspNetCoreComponents.sln.DotSettings
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
@@ -24,10 +24,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{8FD22396-659D-4C55-B00B-00284CD6A1E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Web", "Example.Web\Example.Web.csproj", "{37330CE6-95C2-4193-8881-2F7910176456}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreComponents.Csv", "AspNetCoreComponents.Csv\AspNetCoreComponents.Csv.csproj", "{2D2CA209-956C-40AE-9330-8166B4F25530}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreComponents.Pdf", "AspNetCoreComponents.Pdf\AspNetCoreComponents.Pdf.csproj", "{454C9973-89F1-4F5D-8024-8E3FF9A95435}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +43,6 @@ Global
 		{37330CE6-95C2-4193-8881-2F7910176456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37330CE6-95C2-4193-8881-2F7910176456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37330CE6-95C2-4193-8881-2F7910176456}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D2CA209-956C-40AE-9330-8166B4F25530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D2CA209-956C-40AE-9330-8166B4F25530}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D2CA209-956C-40AE-9330-8166B4F25530}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D2CA209-956C-40AE-9330-8166B4F25530}.Release|Any CPU.Build.0 = Release|Any CPU
-		{454C9973-89F1-4F5D-8024-8E3FF9A95435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{454C9973-89F1-4F5D-8024-8E3FF9A95435}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{454C9973-89F1-4F5D-8024-8E3FF9A95435}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{454C9973-89F1-4F5D-8024-8E3FF9A95435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

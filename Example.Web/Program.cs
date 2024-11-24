@@ -8,15 +8,11 @@ using System.Text.Unicode;
 using AutoMapper;
 
 using Example.Web.Reports.Csv.Helpers;
-using Example.Web.Reports.Pdf.Builders;
-using Example.Web.Reports.Pdf.Helpers;
 using Example.Web.Settings;
 
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Data.SqlClient;
 using Microsoft.Net.Http.Headers;
-
-using PdfSharpCore.Fonts;
 
 using Serilog;
 
@@ -26,9 +22,6 @@ using Smart.AspNetCore.Filters;
 using Smart.Data;
 using Smart.Data.Accessor.Extensions.DependencyInjection;
 using Smart.Data.SqlClient;
-
-using StackExchange.Profiling;
-using StackExchange.Profiling.Data;
 
 // Configure builder
 #pragma warning disable CA1812
@@ -43,12 +36,6 @@ builder.Services.AddSerilog(option =>
 
 // System
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
-// PDF
-GlobalFontSettings.FontResolver = new FontResolver(Directory.GetCurrentDirectory(), FontNames.Gothic, new Dictionary<string, string>
-{
-    { FontNames.Gothic, "ipaexg.ttf" }
-});
 
 // Add framework builder.Services.
 builder.Services.AddHttpContextAccessor();
@@ -93,15 +80,6 @@ builder.Services
 // SignalR
 builder.Services.AddSignalR();
 
-// Profiler
-if (!builder.Environment.IsProduction())
-{
-    builder.Services.AddMiniProfiler(options =>
-    {
-        options.RouteBasePath = "/profiler";
-    });
-}
-
 // Health
 builder.Services.AddHealthChecks();
 
@@ -113,9 +91,7 @@ builder.Services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(c =>
 
 // Database
 var connectionString = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddSingleton<IDbProvider>(builder.Environment.IsProduction()
-    ? new DelegateDbProvider(() => new SqlConnection(connectionString))
-    : new DelegateDbProvider(() => new ProfiledDbConnection(new SqlConnection(connectionString), MiniProfiler.Current)));
+builder.Services.AddSingleton<IDbProvider>(new DelegateDbProvider(() => new SqlConnection(connectionString)));
 
 builder.Services.AddSingleton<IDialect, SqlDialect>();
 
@@ -129,9 +105,6 @@ builder.Services.AddDataAccessor(c =>
 
 // Csv
 builder.Services.AddSingleton<CsvExporter>();
-
-// Report
-builder.Services.AddSingleton<ExampleReportBuilder>();
 
 // Configure
 var app = builder.Build();
@@ -160,11 +133,6 @@ app.UseStaticFiles(new StaticFileOptions
         ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddYears(1).ToString("R", CultureInfo.InvariantCulture));
     }
 });
-
-if (!app.Environment.IsProduction())
-{
-    app.UseMiniProfiler();
-}
 
 app.UseRouting();
 

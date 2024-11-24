@@ -71,8 +71,5 @@
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 </environment>
 @await RenderSectionAsync("Scripts", required: false)
-<environment exclude="Production">
-    <mini-profiler position="@RenderPosition.Right" max-traces="5" />
-</environment>
 </body>
 </html>
