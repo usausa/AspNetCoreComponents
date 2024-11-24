@@ -4,6 +4,7 @@ using CsvHelper.Configuration;
 
 using Example.Web.Areas.Default.Models;
 
+#pragma warning disable IDE0320
 public sealed class ExampleViewCsvMap : ClassMap<ExampleView>
 {
     // ReSharper disable VirtualMemberCallInConstructor

@@ -27,7 +27,7 @@ public sealed class TemporaryCsvWriter : IDisposable
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             HasHeaderRecord = true,
-            ShouldQuote = _ => true,
+            ShouldQuote = static _ => true,
             Delimiter = ","
         };
 
