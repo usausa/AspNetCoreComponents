@@ -5,8 +5,6 @@ using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
 using System.Text.Unicode;
 
-using AutoMapper;
-
 using Example.Web.Reports.Csv.Helpers;
 using Example.Web.Settings;
 
@@ -82,12 +80,6 @@ builder.Services.AddSignalR();
 
 // Health
 builder.Services.AddHealthChecks();
-
-// Mapper
-builder.Services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(c =>
-{
-    c.AddProfile<Example.Web.Areas.Default.MappingProfile>();
-})));
 
 // Database
 var connectionString = builder.Configuration.GetConnectionString("Default");
