@@ -24,6 +24,12 @@ public sealed class QrCodeTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
+        if (String.IsNullOrEmpty(Content))
+        {
+            output.SuppressOutput();
+            return;
+        }
+
         using var generator = new QRCodeGenerator();
         using var data = generator.CreateQrCode(Content, QRCodeGenerator.ECCLevel.Q);
         using var png = new PngByteQRCode(data);
@@ -31,8 +37,16 @@ public sealed class QrCodeTagHelper : TagHelper
 
         output.TagName = "img";
         output.Attributes.Clear();
-        output.Attributes.Add("width", Width);
-        output.Attributes.Add("height", Height);
+        if (Width > 0)
+        {
+            output.Attributes.Add("width", Width);
+        }
+
+        if (Height > 0)
+        {
+            output.Attributes.Add("height", Height);
+        }
+
         output.Attributes.Add("src", "data:image/png;base64," + Convert.ToBase64String(bytes));
         if (!String.IsNullOrEmpty(Alt))
         {
