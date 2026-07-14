@@ -17,7 +17,7 @@ public sealed class ExampleController : BaseDefaultController
     }
 
     [HttpGet]
-    public ValueTask<IActionResult> Csv([FromServices] CsvExporter csvExporter)
+    public IActionResult Csv([FromServices] CsvExporter csvExporter)
     {
         return csvExporter.MakeFileResult(
             "sample.csv",

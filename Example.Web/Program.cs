@@ -1,5 +1,4 @@
 using System.Data;
-using System.Globalization;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
@@ -75,9 +74,6 @@ builder.Services
         options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
     });
 
-// SignalR
-builder.Services.AddSignalR();
-
 // Health
 builder.Services.AddHealthChecks();
 
@@ -119,16 +115,18 @@ app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles(new StaticFileOptions
 {
-    OnPrepareResponse = ctx =>
+    OnPrepareResponse = static ctx =>
     {
-        ctx.Context.Response.Headers[HeaderNames.CacheControl] = "public, max-age=31536000";
-        ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddYears(1).ToString("R", CultureInfo.InvariantCulture));
+        // Only fingerprinted assets (asp-append-version emits a "v" query string) are
+        // safe to cache long-term, since their URL changes whenever the file changes.
+        ctx.Context.Response.Headers[HeaderNames.CacheControl] = ctx.Context.Request.Query.ContainsKey("v")
+            ? "public, max-age=31536000, immutable"
+            : "public, max-age=3600";
     }
 });
 
 app.UseRouting();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

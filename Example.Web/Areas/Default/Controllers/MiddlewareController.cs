@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 public sealed class MiddlewareController : BaseDefaultController
 {
     [HttpGet]
-    public async ValueTask<IActionResult> Time()
+    public async ValueTask<IActionResult> Time(CancellationToken cancel)
     {
-        await Task.Delay(5000);
+        await Task.Delay(5000, cancel);
 
         return View();
     }
