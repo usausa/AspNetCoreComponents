@@ -36,21 +36,20 @@ public sealed class QrCodeTagHelper : TagHelper
         var bytes = png.GetGraphic(Pixel);
 
         output.TagName = "img";
-        output.Attributes.Clear();
         if (Width > 0)
         {
-            output.Attributes.Add("width", Width);
+            output.Attributes.SetAttribute("width", Width);
         }
 
         if (Height > 0)
         {
-            output.Attributes.Add("height", Height);
+            output.Attributes.SetAttribute("height", Height);
         }
 
-        output.Attributes.Add("src", "data:image/png;base64," + Convert.ToBase64String(bytes));
+        output.Attributes.SetAttribute("src", "data:image/png;base64," + Convert.ToBase64String(bytes));
         if (!String.IsNullOrEmpty(Alt))
         {
-            output.Attributes.Add("alt", Alt);
+            output.Attributes.SetAttribute("alt", Alt);
         }
     }
 }
