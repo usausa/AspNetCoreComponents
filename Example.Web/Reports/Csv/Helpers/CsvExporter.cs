@@ -2,6 +2,8 @@ namespace Example.Web.Reports.Csv.Helpers;
 
 using System.Text;
 
+using CsvHelper;
+
 using Microsoft.AspNetCore.Mvc;
 
 public sealed class CsvExporter
@@ -10,7 +12,7 @@ public sealed class CsvExporter
 
     public IActionResult MakeFileResult<T>(
         string downloadName,
-        Type mapType,
+        CsvRecordWriter<T> writer,
         IEnumerable<T> source) =>
-        new CsvStreamResult<T>(downloadName, mapType, source, encoding);
+        new CsvStreamResult<T>(downloadName, writer, source, encoding);
 }

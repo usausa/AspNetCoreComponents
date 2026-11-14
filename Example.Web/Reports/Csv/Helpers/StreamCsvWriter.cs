@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Text;
 
 using CsvHelper;
-using CsvHelper.Configuration;
 
 public sealed class StreamCsvWriter : IAsyncDisposable, IDisposable
 {
@@ -12,24 +11,24 @@ public sealed class StreamCsvWriter : IAsyncDisposable, IDisposable
 
     public CsvWriter Writer { get; }
 
-    public StreamCsvWriter(Stream stream, Type mapType, Encoding? encoding = null, bool leaveOpen = false)
+    public StreamCsvWriter(Stream stream, Encoding? encoding = null, bool leaveOpen = false)
     {
         writer = new StreamWriter(stream, encoding ?? new UTF8Encoding(false), bufferSize: 4096, leaveOpen: leaveOpen);
 
-        var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+        var config = new CsvWriterOptions
         {
-            HasHeaderRecord = true,
-            ShouldQuote = static _ => true,
-            Delimiter = ","
+            HasHeader = true,
+            Quoting = CsvQuoting.Always,
+            Separator = ',',
+            FormatProvider = CultureInfo.InvariantCulture
         };
 
-        Writer = new CsvWriter(writer, config, leaveOpen: true);
-        Writer.Context.RegisterClassMap(mapType);
+        Writer = CsvWriter.Create(writer, config, leaveOpen: true);
     }
 
     public async ValueTask FlushAsync(CancellationToken cancel = default)
     {
-        await Writer.FlushAsync();
+        await Writer.FlushAsync(cancel);
         await writer.FlushAsync(cancel);
     }
 

@@ -2,7 +2,7 @@ namespace Example.Web.Areas.Default.Controllers;
 
 using Example.Web.Areas.Default.Models;
 using Example.Web.Reports.Csv.Helpers;
-using Example.Web.Reports.Csv.Mappers;
+using Example.Web.Reports.Csv.Writers;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +21,7 @@ public sealed class ExampleController : BaseDefaultController
     {
         return csvExporter.MakeFileResult(
             "sample.csv",
-            typeof(ExampleViewCsvMap),
+            new ExampleViewWriter(),
             QueryExampleEnumerable());
     }
 
