@@ -1,4 +1,3 @@
-using System.Data;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
@@ -17,7 +16,6 @@ using Smart.AspNetCore;
 using Smart.AspNetCore.ApplicationModels;
 using Smart.AspNetCore.Filters;
 using Smart.Data;
-using Smart.Data.Accessor.Extensions.DependencyInjection;
 using Smart.Data.SqlClient;
 
 // Configure builder
@@ -65,9 +63,6 @@ builder.Services
         options.Conventions.Add(new KebabControllerModelConvention());
         options.Filters.AddTimeLogging();
     })
-#if DEBUG
-            .AddRazorRuntimeCompilation()
-#endif
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
@@ -83,13 +78,7 @@ builder.Services.AddSingleton<IDbProvider>(new DelegateDbProvider(() => new SqlC
 
 builder.Services.AddSingleton<IDialect, SqlDialect>();
 
-builder.Services.AddDataAccessor(c =>
-{
-    c.EngineOption.ConfigureTypeMap(map =>
-    {
-        map[typeof(DateTime)] = DbType.DateTime2;
-    });
-});
+builder.Services.AddDataAccessors();
 
 // Csv
 builder.Services.AddSingleton<CsvExporter>();
