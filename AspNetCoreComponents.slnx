@@ -6,12 +6,11 @@
     <File Path=".editorconfig" />
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
+    <File Path=".globalconfig" />
     <File Path="AGENTS.md" />
-    <File Path="Analyzers.ruleset" />
     <File Path="AspNetCoreComponents.sln.DotSettings" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
-    <File Path="Example.ruleset" />
     <File Path="LICENSE" />
     <File Path="README.md" />
   </Folder>

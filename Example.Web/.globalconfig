@@ -1,0 +1,10 @@
+is_global = true
+global_level = 101
+
+dotnet_diagnostic.CA1028.severity = silent
+dotnet_diagnostic.CA1054.severity = silent
+dotnet_diagnostic.CA1716.severity = silent
+dotnet_diagnostic.CA1720.severity = silent
+dotnet_diagnostic.CA1724.severity = silent
+dotnet_diagnostic.SA1500.severity = silent
+dotnet_diagnostic.SA1519.severity = silent
